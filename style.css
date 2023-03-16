@@ -116,3 +116,10 @@ p{
     margin-bottom: 4px;
     display: inherit;
 }
+.comprarModal{
+    background-color: #fff;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    z-index: 3;
+}

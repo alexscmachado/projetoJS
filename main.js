@@ -138,6 +138,20 @@ function abrirModal() {
     document.getElementById("cadastro-modal").style.display = 'none';
   }
 
+// Exibir modal de compra
+
+function openCompraModal (){
+ 
+    const comprar = document.querySelector(".comprarModal");
+    comprar.style.display = "flex";
+}
+// fechar modal compra
+
+function closeCompraModal (){
+    document.querySelector(".comprarModal").style.display="none";
+}
+
+
 
   livraria()
 

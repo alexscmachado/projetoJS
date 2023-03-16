@@ -45,6 +45,7 @@
                 <h4 class="cardPrice">R$ 34,90</h4>
                 <p class="cardDetails">Djamila Ribeiro</p>
                 <p class="cardDetails">Companhia das Letras</p>
+                <button class="primaryButton" onClick="openCompraModal()">Adicionar Livro</button>
             </div>
             <div class="book_container">
                 <img class="cardImg" src="https://livrariacultura.vteximg.com.br/arquivos/ids/147978451-292-292/2111519301.jpg?v=638143451447070000">
@@ -52,6 +53,7 @@
                 <h4 class="cardPrice">R$ 54,90</h4>
                 <p class="cardDetails">Simon Sinek</p>
                 <p class="cardDetails">Sextante</p>
+                <button class="primaryButton" onClick="abrirCompraModal()">Comprar</button>
             </div>
             <div class="book_container">
                 <img class="cardImg" src="https://livrariacultura.vteximg.com.br/arquivos/ids/137741414-1000-1000/2111978346.jpg?v=638073127465570000">
@@ -59,11 +61,27 @@
                 <h4 class="cardPrice">R$ 55,00</h4>
                 <p class="cardDetails">Friedrich Durrenmatt</p>
                 <p class="cardDetails">Estação Liberdade</p>
+                <button class="primaryButton" onClick="abrirCompraModal()">Comprar</button>
             </div>
             <div id="mostrar">
                 <ul id="texto"></ul>
              </div>
         </container>
+        <container>
+            <div class="comprarModal">
+               
+                <button class="closeButton" onClick="closeCompraModal()"><p> </p> </button>
+    
+                <img class="cardImg" src="https://livrariacultura.vteximg.com.br/arquivos/ids/147486829-1000-1000/2112175051.jpg?v=638140586969700000">
+                <h3 class="cardTitle">Pequeno manual antirracista</h3>
+                <div class="comprarItem">
+                    <button class="ButtonMenos" onClick=""> - </button>
+                    <input type="text" class ="inputNumber">
+                    <button class="ButtonMais" onClick=""> + </button>
+                 </div>
+            </div>
+        </container>
+        
     </section>
 <script src='main.js'></script>
 
