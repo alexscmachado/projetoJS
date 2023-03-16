@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+
+</head>
+<body>
+    <section>
+        <container>
+            <div id="cadastro-modal">
+                <div id="cadastro-modal-wrapper">
+                    <div class="header">
+                        <div class="title">
+                            <h3>Adicionar Livro</h3>
+                        </div>
+                        <div class="cta">
+                            <button class="closeButton" onClick="fecharModal()"><p> </p> </button>
+                        </div>
+                    </div>
+                    <label class="formLabel" for="cadastroNome"> Nome do Livro:<input type="text" class="formInput" id="cadastroNome" placeholder="Título do livro"></label>
+                    <label class="formLabel" for="cadastroAutor"> Autor:<input type="text" class="formInput" id="cadastroAutor" placeholder="Nome do autor"></label>
+                    <label class="formLabel" for="cadastroEditora"> Editora:<input type="text" class="formInput" id="cadastroEditora" placeholder="Nome da Editora"></label>
+                    <label class="formLabel" for="cadastroPreco"> Preço:<input type="text" class="formInput" id="cadastroPreco" placeholder="R$ 00,00"></label>
+                    <label class="formLabel" for="cadastroCapa"> Imagem da capa:<input type="url" class="formInput" id="cadastroCapa" placeholder="Imagem da capa"></label>
+                    <button class="primaryButton" id="buttonSubmit"> Cadastrar</button>
+                </div>
+            </div>
+        </container>
+        <container class="wrapper"> 
+            <div class="header">
+                <div class="title">
+                    <h1>Livraria </h1>
+                </div>
+                <div class="cta">
+                    <button class="primaryButton" onClick="abrirModal()">Adicionar Livro</button>
+                </div>
+            </div>
+            <div class="book_container">
+                <img class="cardImg" src="https://livrariacultura.vteximg.com.br/arquivos/ids/147486829-1000-1000/2112175051.jpg?v=638140586969700000">
+                <h3 class="cardTitle">Pequeno manual antirracista</h3>
+                <h4 class="cardPrice">R$ 34,90</h4>
+                <p class="cardDetails">Djamila Ribeiro</p>
+                <p class="cardDetails">Companhia das Letras</p>
+            </div>
+            <div class="book_container">
+                <img class="cardImg" src="https://livrariacultura.vteximg.com.br/arquivos/ids/147978451-292-292/2111519301.jpg?v=638143451447070000">
+                <h3 class="cardTitle">Comece pelo porque</h3>
+                <h4 class="cardPrice">R$ 54,90</h4>
+                <p class="cardDetails">Simon Sinek</p>
+                <p class="cardDetails">Sextante</p>
+            </div>
+            <div class="book_container">
+                <img class="cardImg" src="https://livrariacultura.vteximg.com.br/arquivos/ids/137741414-1000-1000/2111978346.jpg?v=638073127465570000">
+                <h3 class="cardTitle">A Promessa / A Pane</h3>
+                <h4 class="cardPrice">R$ 55,00</h4>
+                <p class="cardDetails">Friedrich Durrenmatt</p>
+                <p class="cardDetails">Estação Liberdade</p>
+            </div>
+            <div id="mostrar">
+                <ul id="texto"></ul>
+             </div>
+        </container>
+    </section>
+<script src='main.js'></script>
+
+</body>
+</html>

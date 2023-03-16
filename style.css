@@ -1,0 +1,118 @@
+.cadastro{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.buttonSubmitCadastro{
+
+    width: 80px;
+}
+body{
+	font-family: sans-serif, "Roboto";
+	background-color: #fafafa;
+}
+h1{
+	font-size: 32px;
+}
+h2{
+	font-size: 24px;
+	color: #17a2b8;
+}
+h3{
+	font-size: 18px;
+	font-weight: normal;
+	color: #17a2b8;
+}
+p{
+	font-size: 14px;
+	color: #333333;
+}
+
+.wrapper{
+	max-width: 1020px;
+	margin: auto;
+}
+
+.book_container{
+	width: 25%;
+	margin:  1%;
+	padding:  20px;
+	box-shadow: 0 -5px 20px rgb(0 0 0 / 10%);
+	border-radius: 4px;
+	float: left;
+	background-color: #ffffff;
+}
+.cardPrice{
+	color: #17a2b8;
+	margin: 0px;	
+}
+.cardDetails{
+	color: #888;
+	margin: 0px;	
+	line-height: 120%;	
+}
+.cardImg{
+ max-width: 200px;  
+ margin: auto; 
+}
+
+.primaryButton{
+    background-color: #17a2b8;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: 1px solid #17a2b8;
+    cursor: pointer;
+}
+.primaryButton:hover{
+    background-color: #0d8598;
+
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#cadastro-modal{
+    background-color: #333333;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    z-index: 3;
+}
+
+#cadastro-modal-wrapper{
+    padding: 16px;
+    background-color: #fff;
+    display: inline-grid;
+    width: 60%;
+    height: auto;
+    margin: auto;
+}
+
+.closeButton{
+    background-color: #fff;
+    border: none;
+    background-image: url(https://img.icons8.com/material-outlined/512/delete-sign.png);
+    background-repeat: no-repeat;
+    background-size: 14px;
+    padding: 8px;
+    cursor: pointer;
+}
+.closeButton:hover{
+    background-size: 12px;
+}
+.formInput{
+    padding: 4px;
+    display: inline-block;
+    border: 1px solid #bababa;
+    margin-bottom: 8px;
+    margin-top: 4px;
+}
+
+.formLabel{
+    font-size: 14px;
+    margin-bottom: 4px;
+    display: inherit;
+}
