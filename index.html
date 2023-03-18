@@ -29,6 +29,22 @@
                     <button class="primaryButton" id="buttonSubmit"> Cadastrar</button>
                 </div>
             </div>
+            <div class="comprarModal">
+                <button class="closeButton" onClick="closeCompraModal()"><p> </p> </button>
+                <div class="comprarModalWrapper">
+                    <div class="comprarModalCard">
+                        <img class="cardImgModal" src="./images/anti.jpeg">
+                        <h3 class="ComprarModalCardDescription">Descrição<br><p>Neste pequeno manual, a filósofa e ativista Djamila Ribeiro trata de temas como atualidade do racismo, negritude, branquitude, violência racial, cultura, desejos e afetos.</p></h3>
+                    </div>
+                    <div class="comprarModalSelect">
+                        <button class="buttonMenos" onClick="compraSetItens.menos()"> - </button>
+                        <input type="number" class ="inputNumber">
+                        <button class="buttonMais" onClick="compraSetItens.plus()"> + </button>
+                     </div>
+
+                </div>
+                
+            </div>
         </container>
         <container class="wrapper"> 
             <div class="header">
@@ -40,12 +56,12 @@
                 </div>
             </div>
             <div class="book_container">
-                <img class="cardImg" src="https://livrariacultura.vteximg.com.br/arquivos/ids/147486829-1000-1000/2112175051.jpg?v=638140586969700000">
+                <img class="cardImgDisplay" src="./images/anti.jpeg">
                 <h3 class="cardTitle">Pequeno manual antirracista</h3>
                 <h4 class="cardPrice">R$ 34,90</h4>
                 <p class="cardDetails">Djamila Ribeiro</p>
                 <p class="cardDetails">Companhia das Letras</p>
-                <button class="primaryButton" onClick="openCompraModal()">Adicionar Livro</button>
+                <button class="primaryButton" onClick="openCompraModal()">comprar</button>
             </div>
             <div class="book_container">
                 <img class="cardImg" src="https://livrariacultura.vteximg.com.br/arquivos/ids/147978451-292-292/2111519301.jpg?v=638143451447070000">
@@ -53,7 +69,7 @@
                 <h4 class="cardPrice">R$ 54,90</h4>
                 <p class="cardDetails">Simon Sinek</p>
                 <p class="cardDetails">Sextante</p>
-                <button class="primaryButton" onClick="abrirCompraModal()">Comprar</button>
+                <button class="primaryButton" onClick="openCompraModal()">Comprar</button>
             </div>
             <div class="book_container">
                 <img class="cardImg" src="https://livrariacultura.vteximg.com.br/arquivos/ids/137741414-1000-1000/2111978346.jpg?v=638073127465570000">
@@ -67,20 +83,7 @@
                 <ul id="texto"></ul>
              </div>
         </container>
-        <container>
-            <div class="comprarModal">
-               
-                <button class="closeButton" onClick="closeCompraModal()"><p> </p> </button>
-    
-                <img class="cardImg" src="https://livrariacultura.vteximg.com.br/arquivos/ids/147486829-1000-1000/2112175051.jpg?v=638140586969700000">
-                <h3 class="cardTitle">Pequeno manual antirracista</h3>
-                <div class="comprarItem">
-                    <button class="buttonMenos" onClick="compraSetItens.menos()"> - </button>
-                    <input type="number" class ="inputNumber">
-                    <button class="buttonMais" onClick="compraSetItens.plus()"> + </button>
-                 </div>
-            </div>
-        </container>
+        
         
     </section>
 <script src='main.js'></script>
