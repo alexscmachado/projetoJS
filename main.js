@@ -150,35 +150,42 @@ function openCompraModal() {
 function closeCompraModal() {
     document.querySelector(".comprarModal").style.display = "none";
 }
+let = document.querySelector(".inputNumber").value = 1
 
-class comprarItens {
+class ComprarItens {
     constructor() {
-        this.numero = 0
+            
     }
+    
     plus() {
-
-        this.numero++
-
-        compraSetItens.buttonPlus(this.numero)
+        let atual=document.querySelector(".inputNumber").value
+        let novo = atual -(-1)
+        document.querySelector(".inputNumber").value = novo    
+        let changeValor = document.querySelector(".preco")
+        let valorAtual = 34.90
+        let quant = novo
+        let valorNovo = quant*valorAtual
+        changeValor.innerHTML = valorNovo
     }
     menos() {
-
-
-        this.numero--
-
-        compraSetItens.buttonPlus(this.numero)
+        let atual=document.querySelector(".inputNumber").value    
+        if(atual>0){
+            let novo = atual -1
+            document.querySelector(".inputNumber").value = novo
+            let changeValor = document.querySelector(".preco")
+            let valorAtual = 34.90
+            let quant = novo
+            let valorNovo = quant*valorAtual
+            changeValor.innerHTML = valorNovo
+           
+        }
+       
     }
-    buttonPlus(value) {
-        document.querySelector(".inputNumber").value = value
-
-    }
-
 }
 
-let compraSetItens = new comprarItens()
-
-
+let compraSetItens = new ComprarItens()
 livraria()
 compraSetItens.plus()
 compraSetItens.menos()
-compraSetItens.buttonPlus(this.numero)
+
+
