@@ -10,7 +10,6 @@
 </head>
 <body>
     <section>
-        <container>
             <div id="cadastro-modal">
                 <div id="cadastro-modal-wrapper">
                     <div class="header">
@@ -50,16 +49,12 @@
                                 <input type="number" class ="inputNumber">
                                 <button class="buttonMais" onClick="compraSetItens.plus()"> + </button>
                             </div>
-                      
                         </div>
-                     
                      </div>
-
                 </div>
-                
             </div>
-        </container>
-        <container class="wrapper"> 
+        </section>
+        <section class="wrapper"> 
             <div class="header">
                 <div class="title">
                     <h1>Livraria </h1>
@@ -68,36 +63,46 @@
                     <button class="primaryButton" onClick="abrirModal()">Adicionar Livro</button>
                 </div>
             </div>
-            <div class="book_container">
-                <img class="cardImgDisplay" src="./images/anti.jpeg">
-                <h3 class="cardTitle">Pequeno manual antirracista</h3>
-                <h4 class="cardPrice">R$ 34,90</h4>
-                <p class="cardDetails">Djamila Ribeiro</p>
-                <p class="cardDetails">Companhia das Letras</p>
-                <button class="primaryButton" onClick="openCompraModal()">comprar</button>
-            </div>
-            <div class="book_container">
-                <img class="cardImg" src="https://livrariacultura.vteximg.com.br/arquivos/ids/147978451-292-292/2111519301.jpg?v=638143451447070000">
-                <h3 class="cardTitle">Comece pelo porque</h3>
-                <h4 class="cardPrice">R$ 54,90</h4>
-                <p class="cardDetails">Simon Sinek</p>
-                <p class="cardDetails">Sextante</p>
-                <button class="primaryButton" onClick="openCompraModal()">Comprar</button>
-            </div>
-            <div class="book_container">
-                <img class="cardImg" src="https://livrariacultura.vteximg.com.br/arquivos/ids/137741414-1000-1000/2111978346.jpg?v=638073127465570000">
-                <h3 class="cardTitle">A Promessa / A Pane</h3>
-                <h4 class="cardPrice">R$ 55,00</h4>
-                <p class="cardDetails">Friedrich Durrenmatt</p>
-                <p class="cardDetails">Estação Liberdade</p>
-                <button class="primaryButton" onClick="abrirCompraModal()">Comprar</button>
-            </div>
             <div id="mostrar">
-                <ul id="texto"></ul>
-             </div>
-        </container>
-        
-        
+                <ul id="book-list">
+                    <li class="li-book-container">
+                        <div class="book_container">
+                        <div class="cardImgcontainer">
+                            <img class="cardImg" src="./images/anti.jpeg">
+                        </div>
+                        <h3 class="cardTitle">Pequeno manual antirracista</h3>
+                        <h4 class="cardPrice">R$ 34,90</h4>
+                        <p class="cardDetails">Djamila Ribeiro</p>
+                        <p class="cardDetails">Companhia das Letras</p>
+                        <button class="buyButton" onClick="openCompraModal()">comprar</button>
+                        </div>
+                    </li>
+                    <li class="li-book-container">
+                        <div class="book_container">
+                        <div class="cardImgcontainer">
+                            <img class="cardImg" src="https://m.media-amazon.com/images/I/81nNCJpeHpL.jpg">
+                        </div>
+                        <h3 class="cardTitle">O passeador de livros</h3>
+                        <h4 class="cardPrice">R$ 54,90</h4>
+                        <p class="cardDetails">Carsten Henn</p>
+                        <p class="cardDetails">Intrinseca</p>
+                        <button class="buyButton" onClick="openCompraModal()">Comprar</button>
+                        </div>
+                    </li>
+                    <li class="li-book-container">
+                        <div class="book_container">
+                        <div class="cardImgcontainer">
+                            <img class="cardImg" src="https://livrariacultura.vteximg.com.br/arquivos/ids/137741414-1000-1000/2111978346.jpg?v=638073127465570000">
+                        </div>
+                        <h3 class="cardTitle">A Promessa / A Pane</h3>
+                        <h4 class="cardPrice">R$ 55,00</h4>
+                        <p class="cardDetails">Friedrich Durrenmatt</p>
+                        <p class="cardDetails">Estação Liberdade</p>
+                        <button class="buyButton" onClick="abrirCompraModal()">Comprar</button>
+                        </div>
+                    </li>
+                </ul>
+             </div>    
     </section>
 <script src='main.js'></script>
 
