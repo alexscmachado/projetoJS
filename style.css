@@ -152,6 +152,7 @@ p{
     justify-content: center;
     width: 50%;
     height: 100%;
+   
  
 }
 .ComprarModalCardDescription{
@@ -170,7 +171,11 @@ p{
 .comprarModalSelect{
     width: 40%;
     height: 60%;
-    background-color: bisque;
+    background-color: white;
+    border: #888  solid  1px;
+    box-shadow: 5px 5px 5px 3px teal;
+    margin-top: 40px;
+    
     
 }
 .comprarCardTitle{
@@ -178,12 +183,17 @@ p{
     color: black;
     font-size: 25px;
 }
+
+.comprarCardEditor{
+    margin-left: 15px;
+}
 .comprarModalSelectQuant{
    
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     margin-top: 10%;
+    border: #888  solid  1px;
 }
 .comprarModalSelectQuantPreco{
     display: flex;

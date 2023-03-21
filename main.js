@@ -163,9 +163,10 @@ class ComprarItens {
         document.querySelector(".inputNumber").value = novo    
         let changeValor = document.querySelector(".preco")
         let valorAtual = 34.90
-        let quant = novo
+            let quant = novo
         let valorNovo = quant*valorAtual
-        changeValor.innerHTML = valorNovo
+        changeValor.innerHTML = valorNovo.toFixed(2)
+        
     }
     menos() {
         let atual=document.querySelector(".inputNumber").value    
@@ -176,8 +177,8 @@ class ComprarItens {
             let valorAtual = 34.90
             let quant = novo
             let valorNovo = quant*valorAtual
-            changeValor.innerHTML = valorNovo
-           
+            changeValor.innerHTML = valorNovo.toFixed(2)
+                    
         }
        
     }
