@@ -40,32 +40,59 @@ p{
 
 .book_container{
 	width: 25%;
-	margin:  1%;
-	padding:  20px;
+	margin: 16px;
+	padding: 24px;
 	box-shadow: 0 -5px 20px rgb(0 0 0 / 10%);
 	border-radius: 4px;
 	float: left;
 	background-color: #ffffff;
 }
+.li-book-container{
+    list-style: none;
+}
 .cardPrice{
 	color: #17a2b8;
-	margin: 0px;	
+	margin: 0px;
+    line-height: 180%;	
 }
 .cardDetails{
 	color: #888;
 	margin: 0px;	
-	line-height: 120%;	
+	line-height: 130%;	
+}
+.cardTitle{
+    line-height: 180%;	
 }
 .cardImg{
- max-width: 200px;  
- margin: auto; 
+ max-width: 200px;
+ max-height: 160px;  
+ margin: auto;
+ text-align: center;
 }
 .cardImgDisplay{
     max-width: 130px;  
     margin: auto; 
 }
+.cardImgcontainer{
+    display: flex;
+    justify-content: center;
+}
+.buyButton{
+    background-color: #17a2b8;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #17a2b8;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 8px;
+    width: 100%;
+    text-transform: uppercase;
+}
+.buyButton:hover{
+    background-color: #0d8598;
 
-
+}
 .primaryButton{
     background-color: #17a2b8;
     color: #fff;
@@ -82,10 +109,11 @@ p{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 2%;
 }
 
 #cadastro-modal{
-    background-color: #333333;
+    background-color: rgb(0,0,0, 0.6);
     width: 100vw;
     height: 100vh;
     display: none;
@@ -93,10 +121,10 @@ p{
 }
 
 #cadastro-modal-wrapper{
-    padding: 16px;
+    padding: 24px;
     background-color: #fff;
     display: inline-grid;
-    width: 60%;
+    width: 50%;
     height: auto;
     margin: auto;
 }
