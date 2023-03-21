@@ -1,8 +1,9 @@
-function livrosAdd(nome, autor, editora, preco) {
+function livrosAdd(nome, autor, editora, preco, capa) {
     this.nome = nome
     this.autor = autor
     this.editora = editora
     this.preco = preco
+    this.capa = capa
 }
 class Adicionar {
     constructor() {
@@ -15,12 +16,14 @@ class Adicionar {
         let autor = document.querySelector("#cadastroAutor").value
         let editora = document.querySelector("#cadastroEditora").value
         let preco = document.querySelector("#cadastroPreco").value
-        const novoLivro = new livrosAdd(nome, autor, editora, preco)
+        let capa = document.querySelector("#cadastroCapa").value
+        const novoLivro = new livrosAdd(nome, autor, editora, preco, capa)
 
         this.cadastroDeLivro.push(novoLivro)
         console.log(this.cadastroDelivro, novoLivro)
 
-        add.listarLivros()
+        add.exibirLivros(novoLivro)
+        add.limparForm()
     }
     dispararButton() {
         let button = document.getElementById("buttonSubmit")
@@ -44,24 +47,43 @@ class Adicionar {
         }
     }
 
-    listarLivros() {
 
-        // let titulosLivros = ""
-        // this.cadastroDeLivro.forEach(element => {
-        for (const titulosLivros of this.cadastroDeLivro) {
-            let pai = document.getElementById("texto")
-            let li = document.createElement("li")
-            li.innerHTML = titulosLivros.nome
-            pai.appendChild(li)
-            // titulosLivros += element.nome + "\n"
+    exibirLivros(livro){
+        const container = document.getElementById('book-list')
+          //for (const livro of this.cadastroDeLivro) {
+            const card = document.createElement('li')
 
-        };
+            // Construct card content
+            const content = `
+            <div class= 'book_container'>
+            <div class="cardImgcontainer">
+            <img class='cardImg' src='${livro.capa}'>
+            </div>
+            <h3 class='cardTitle'>${livro.nome}</h3>
+            <h4 class='cardPrice'>R$ ${livro.preco}</h4>
+            <p class=cardDetails'>${livro.autor}</p>
+            <p class='cardDetails'>${livro.editora}</p>
+            <button class='buyButton'>Comprar</button>
+            </div>
+            `;
 
+            // Append newyly created card element to the container
+            container.innerHTML += content
+            //}
     }
+
 
     removerlivro(indice) {
         this.cadastroDeLivro.splice(indice, 1)
 
+    }
+
+    limparForm(){
+        document.querySelector("#cadastroNome").value = ""
+        document.querySelector("#cadastroAutor").value = ""
+        document.querySelector("#cadastroEditora").value = ""
+        document.querySelector("#cadastroPreco").value = ""
+        document.querySelector("#cadastroCapa").value = ""
     }
 }
 const add = new Adicionar()
@@ -139,9 +161,7 @@ function fecharModal() {
 }
 
 // Exibir modal de compra
-
 function openCompraModal() {
-
     const comprar = document.querySelector(".comprarModal");
     comprar.style.display = "flex";
 }
