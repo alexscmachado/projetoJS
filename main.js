@@ -170,7 +170,8 @@ function openCompraModal() {
 function closeCompraModal() {
     document.querySelector(".comprarModal").style.display = "none";
 }
-let = document.querySelector(".inputNumber").value = 1
+
+let =  document.querySelector(".inputNumber").value = 1
 
 class ComprarItens {
     constructor() {

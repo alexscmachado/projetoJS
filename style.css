@@ -221,7 +221,7 @@ p{
     flex-direction: row;
     justify-content: space-evenly;
     margin-top: 10%;
-    border: #888  solid  1px;
+    
 }
 .comprarModalSelectQuantPreco{
     display: flex;
