@@ -11,7 +11,6 @@ class Adicionar {
 
     }
     adicionarLivro() {
-
         let nome = document.querySelector("#cadastroNome").value
         let autor = document.querySelector("#cadastroAutor").value
         let editora = document.querySelector("#cadastroEditora").value
@@ -25,6 +24,7 @@ class Adicionar {
         add.exibirLivros(novoLivro)
         add.limparForm()
     }
+
     dispararButton() {
         let button = document.getElementById("buttonSubmit")
         button.onclick = () => {
@@ -47,10 +47,8 @@ class Adicionar {
         }
     }
 
-
     exibirLivros(livro){
         const container = document.getElementById('book-list')
-          //for (const livro of this.cadastroDeLivro) {
             const card = document.createElement('li')
 
             // Construct card content
@@ -63,7 +61,7 @@ class Adicionar {
             <h4 class='cardPrice'>R$ ${livro.preco}</h4>
             <p class=cardDetails'>${livro.autor}</p>
             <p class='cardDetails'>${livro.editora}</p>
-            <button class='buyButton'>Comprar</button>
+            <button class='buyButton' onClick="openCompraModal('${livro.nome}')">Comprar</button>
             </div>
             `;
 
@@ -72,10 +70,8 @@ class Adicionar {
             //}
     }
 
-
     removerlivro(indice) {
         this.cadastroDeLivro.splice(indice, 1)
-
     }
 
     limparForm(){
@@ -89,7 +85,7 @@ class Adicionar {
 const add = new Adicionar()
 // add.adicionarLivro()
 add.dispararButton()
-add.listarLivros()
+//add.listarLivros()
 
 const sair = 0
 const cadastrar = 1
@@ -147,8 +143,6 @@ const escolha = () => {
 //     }
 // livraria()
 
-
-
 // Exibir modal de cadastro de livro
 function abrirModal() {
     const modal = document.getElementById("cadastro-modal");
@@ -161,9 +155,20 @@ function fecharModal() {
 }
 
 // Exibir modal de compra
-function openCompraModal() {
+function openCompraModal(nomeLivro) {
     const comprar = document.querySelector(".comprarModal");
     comprar.style.display = "flex";
+    const livroFind = add.cadastroDeLivro.find(livro =>{return nomeLivro==livro.nome});
+    const modalBookTitle = document.querySelector('#bookTitle')
+    modalBookTitle.innerText = `${livroFind.nome}`
+    const modalBookCover = document.querySelector('#bookCover')
+    modalBookCover.innerHTML = `<img class="cardImgModal" src="${livroFind.capa}">`
+    const modalBookPrice = document.querySelector('#bookPrice')
+    modalBookPrice.innerText = `${livroFind.preco}`
+    const modalBookPublisher = document.querySelector('#bookPublisher')
+    modalBookPublisher.innerText = `${livroFind.editora}`
+    const modalBookAuthor = document.querySelector('#bookAuthor')
+    modalBookAuthor.innerText = `${livroFind.autor}`    
 }
 // fechar modal compra
 
