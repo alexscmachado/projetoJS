@@ -83,24 +83,36 @@ class Adicionar {
     }
 }
 const add = new Adicionar()
-// add.adicionarLivro()
 add.dispararButton()
-//add.listarLivros()
 
-const sair = 0
-const cadastrar = 1
-const buscar = 2
-const remover = 3
-const listar = 4
+const livrosIniciais = [{ nome: "Pequeno manual antirracista",  autor: "Djamila Ribeiro", editora: "Companhia das Letras", preco: 34.99 , capa: "./images/anti.jpeg"},
+                    { nome: "O passeador de livros",  autor: "Carsten Henn", editora: "Intrinseca", preco: 50.99 , capa: "./images/passeador.jpeg"},
+                    { nome: "A Promessa / A Pane",  autor: "Friedrich Durrenmatt", editora: "Estação Liberdade", preco: 94.99 , capa: "./images/promessa.jpeg"}];
 
-const escolha = () => {
-    return `
-       0 - Sair
-       1 - Adicionar Livro
-       2 - Buscar Livros
-       3 - remover Livro
-       4 - Listar Livros`
-}
+    livrosIniciais.forEach(item =>{
+        add.cadastroDeLivro.push(item)
+        add.exibirLivros(item)
+    });
+
+// Armazenar livros iniciais em JSON no Local Storage
+const saveInitialBooks = (chave, valor) => { localStorage.setItem(chave, valor) };
+saveInitialBooks("listaLivrosIniciais", JSON.stringify(livrosIniciais));
+
+
+// const sair = 0
+// const cadastrar = 1
+// const buscar = 2
+// const remover = 3
+// const listar = 4
+
+// const escolha = () => {
+//     return `
+//        0 - Sair
+//        1 - Adicionar Livro
+//        2 - Buscar Livros
+//        3 - remover Livro
+//        4 - Listar Livros`
+// }
 
 // function livraria(){
 // const add = new Adicionar()
