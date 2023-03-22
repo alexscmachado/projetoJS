@@ -117,6 +117,7 @@ p{
     width: 100vw;
     height: 100vh;
     display: none;
+    position: absolute;
     z-index: 3;
 }
 
@@ -159,6 +160,7 @@ p{
     width: 100vw;
     height: 100vh;
     display: none;
+    position: absolute;
     z-index: 3;
 }
 .comprarModalWrapper{
@@ -169,7 +171,7 @@ p{
     justify-content: space-evenly;
     gap: 10px;
     width: 60%;
-    height: 80%;
+    height: 50%;
     margin: auto;
     
 }

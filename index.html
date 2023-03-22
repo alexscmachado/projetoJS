@@ -31,17 +31,17 @@
             <div class="comprarModal">         
                 <div class="comprarModalWrapper">
                     <button class="closeButton" onClick="closeCompraModal()"><p> </p> </button>
-                    <div class="comprarModalCard">
-                        <img class="cardImgModal" src="./images/anti.jpeg">
-                        <h3 class="ComprarModalCardDescription">Descrição<br><p>Neste pequeno manual, a filósofa e ativista Djamila Ribeiro trata de temas como atualidade do racismo, negritude, branquitude, violência racial, cultura, desejos e afetos.</p></h3>
+                    <div class="comprarModalCard" id="bookCover">
+                        
                     </div>
-             
                     <div class="comprarModalSelect">
-                        <h3 class="cardTitle comprarCardTitle">Pequeno manual antirracista</h3>
+                        <h3 class="cardTitle comprarCardTitle" id="bookTitle"> </h3>
+                        <p class="cardDetails" id="bookAuthor"> </p>
+                        <p class="cardDetails" id="bookPublisher"> </p>
                         <div class="comprarModalSelectQuant">
                             <div class="comprarModalSelectQuantPreco">
                                 <h2 class="cifrao">R$</h2>
-                                <h2 class="preco">34,90</h2>
+                                <h2 class="preco" id="bookPrice"> </h2>
                             </div>
                             <div class="comprarModalSelectQuantSet">
                                 <button class="buttonMenos" onClick="compraSetItens.menos()"> - </button>
@@ -51,7 +51,7 @@
                         </div>
                      </div>
                 </div>
-            </div>
+            </div> 
         </section>
         <section class="wrapper"> 
             <div class="header">
@@ -64,7 +64,7 @@
             </div>
             <div id="mostrar">
                 <ul id="book-list">
-                    <li class="li-book-container">
+                    <!-- <li class="li-book-container">
                         <div class="book_container">
                         <div class="cardImgcontainer">
                             <img class="cardImg" src="./images/anti.jpeg">
@@ -99,7 +99,7 @@
                         <p class="cardDetails">Estação Liberdade</p>
                         <button class="buyButton" onClick="abrirCompraModal()">Comprar</button>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
              </div>    
     </section>
