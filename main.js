@@ -5,10 +5,10 @@ function livrosAdd(nome, autor, editora, preco, capa) {
     this.preco = preco
     this.capa = capa
 }
+
 class Adicionar {
     constructor() {
         this.cadastroDeLivro = []
-
     }
     adicionarLivro() {
         let nome = document.querySelector("#cadastroNome").value
@@ -17,12 +17,14 @@ class Adicionar {
         let preco = document.querySelector("#cadastroPreco").value
         let capa = document.querySelector("#cadastroCapa").value
         const novoLivro = new livrosAdd(nome, autor, editora, preco, capa)
-
+        
+        this.cadastroDeLivro = JSON.parse(localStorage.getItem("livrosdoUsuario")) || []
         this.cadastroDeLivro.push(novoLivro)
         console.log(this.cadastroDelivro, novoLivro)
 
         add.exibirLivros(novoLivro)
         add.limparForm()
+        localStorage.setItem("livrosdoUsuario", JSON.stringify(this.cadastroDeLivro))
     }
 
     dispararButton() {
@@ -85,19 +87,25 @@ class Adicionar {
 const add = new Adicionar()
 add.dispararButton()
 
+//Adicionar Livros para carregamento inicial da página
 const livrosIniciais = [{ nome: "Pequeno manual antirracista",  autor: "Djamila Ribeiro", editora: "Companhia das Letras", preco: 34.99 , capa: "./images/anti.jpeg"},
                     { nome: "O passeador de livros",  autor: "Carsten Henn", editora: "Intrinseca", preco: 50.99 , capa: "./images/passeador.jpeg"},
                     { nome: "A Promessa / A Pane",  autor: "Friedrich Durrenmatt", editora: "Estação Liberdade", preco: 94.99 , capa: "./images/promessa.jpeg"}];
 
     livrosIniciais.forEach(item =>{
-        add.cadastroDeLivro.push(item)
         add.exibirLivros(item)
     });
 
-// Armazenar livros iniciais em JSON no Local Storage
-const saveInitialBooks = (chave, valor) => { localStorage.setItem(chave, valor) };
-saveInitialBooks("listaLivrosIniciais", JSON.stringify(livrosIniciais));
+// Armazenar livros em JSON no Local Storage
+const saveBooksLS = (chave, valor) => { localStorage.setItem(chave, valor) };
+saveBooksLS("listaLivrosIniciais", JSON.stringify(livrosIniciais))
 
+//Exibir livros salvos no local storage
+const livrosUsuario = JSON.parse(localStorage.getItem("livrosdoUsuario"))
+    console.log(livrosUsuario)
+    livrosUsuario.forEach(item =>{
+        add.exibirLivros(item)
+    });
 
 // const sair = 0
 // const cadastrar = 1
