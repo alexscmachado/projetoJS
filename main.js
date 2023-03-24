@@ -11,7 +11,6 @@ class Adicionar {
 
     }
     adicionarLivro() {
-
         let nome = document.querySelector("#cadastroNome").value
         let autor = document.querySelector("#cadastroAutor").value
         let editora = document.querySelector("#cadastroEditora").value
@@ -21,10 +20,12 @@ class Adicionar {
 
         this.cadastroDeLivro.push(novoLivro)
         console.log(this.cadastroDelivro, novoLivro)
-
+        
+       
         add.exibirLivros(novoLivro)
         add.limparForm()
     }
+
     dispararButton() {
         let button = document.getElementById("buttonSubmit")
         button.onclick = () => {
@@ -47,10 +48,8 @@ class Adicionar {
         }
     }
 
-
     exibirLivros(livro){
         const container = document.getElementById('book-list')
-          //for (const livro of this.cadastroDeLivro) {
             const card = document.createElement('li')
 
             // Construct card content
@@ -63,7 +62,7 @@ class Adicionar {
             <h4 class='cardPrice'>R$ ${livro.preco}</h4>
             <p class=cardDetails'>${livro.autor}</p>
             <p class='cardDetails'>${livro.editora}</p>
-            <button class='buyButton'>Comprar</button>
+            <button class='buyButton' onClick="openCompraModal('${livro.nome}')">Comprar</button>
             </div>
             `;
 
@@ -72,10 +71,8 @@ class Adicionar {
             //}
     }
 
-
     removerlivro(indice) {
         this.cadastroDeLivro.splice(indice, 1)
-
     }
 
     limparForm(){
@@ -87,69 +84,22 @@ class Adicionar {
     }
 }
 const add = new Adicionar()
-// add.adicionarLivro()
 add.dispararButton()
-add.listarLivros()
 
-const sair = 0
-const cadastrar = 1
-const buscar = 2
-const remover = 3
-const listar = 4
+const livrosIniciais = [{ nome: "Pequeno manual antirracista",  autor: "Djamila Ribeiro", editora: "Companhia das Letras", preco: 34.99 , capa: "./images/anti.jpeg"},
+                    { nome: "O passeador de livros",  autor: "Carsten Henn", editora: "Intrinseca", preco: 50.99 , capa: "./images/passeador.jpeg"},
+                    { nome: "A Promessa / A Pane",  autor: "Friedrich Durrenmatt", editora: "Estação Liberdade", preco: 94.99 , capa: "./images/promessa.jpeg"}];
 
-const escolha = () => {
-    return `
-       0 - Sair
-       1 - Adicionar Livro
-       2 - Buscar Livros
-       3 - remover Livro
-       4 - Listar Livros`
-}
+    livrosIniciais.forEach(item =>{
+        add.cadastroDeLivro.push(item)
+        add.exibirLivros(item)
+    });
 
-// function livraria(){
-// const add = new Adicionar()
-//    let menu
-//     do{
-//          menu =parseInt( prompt ("Escolha: "+ escolha()))
-
-//          switch(menu){
-
-//             case cadastrar:
-//               add.adicionarLivro()
-//                 break
-
-//             case buscar:
-//                 let busca = prompt("Digite o livro que deseja buscar")
-//                 add.buscarLivros(busca)
-//                 break
-
-//             case remover:
-//                 let indice = parseInt( prompt ("Escolha o índice que deseja remover:"))
-//                 add.removerlivro(indice)
-//                 break
-
-//             case listar:
-//                 add.listarLivros()
-//                 break
-
-//             case sair:
-//                 alert ("até logo")
-//                 break
-
-//                 default:
-//                     alert(
-//                         "Opção inválida! Escolha uma das opções abaixo:" + escolha())
-//          }
-
-//     }while (menu != sair)
+// Armazenar livros iniciais em JSON no Local Storage
+const saveInitialBooks = (chave, valor) => { localStorage.setItem(chave, valor) };
+saveInitialBooks("listaLivrosIniciais", JSON.stringify(livrosIniciais));
 
 
-//     }
-// livraria()
-
-
-
-// Exibir modal de cadastro de livro
 function abrirModal() {
     const modal = document.getElementById("cadastro-modal");
     modal.style.display = 'flex';
@@ -161,9 +111,20 @@ function fecharModal() {
 }
 
 // Exibir modal de compra
-function openCompraModal() {
+function openCompraModal(nomeLivro) {
     const comprar = document.querySelector(".comprarModal");
     comprar.style.display = "flex";
+    const livroFind = add.cadastroDeLivro.find(livro =>{return nomeLivro==livro.nome});
+    const modalBookTitle = document.querySelector('#bookTitle')
+    modalBookTitle.innerText = `${livroFind.nome}`
+    const modalBookCover = document.querySelector('#bookCover')
+    modalBookCover.innerHTML = `<img class="cardImgModal" src="${livroFind.capa}">`
+    const modalBookPrice = document.querySelector('#bookPrice')
+    modalBookPrice.innerText = `${livroFind.preco}`
+    const modalBookPublisher = document.querySelector('#bookPublisher')
+    modalBookPublisher.innerText = `${livroFind.editora}`
+    const modalBookAuthor = document.querySelector('#bookAuthor')
+    modalBookAuthor.innerText = `${livroFind.autor}`    
 }
 // fechar modal compra
 
