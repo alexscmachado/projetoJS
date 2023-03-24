@@ -5,10 +5,10 @@ function livrosAdd(nome, autor, editora, preco, capa) {
     this.preco = preco
     this.capa = capa
 }
+
 class Adicionar {
     constructor() {
         this.cadastroDeLivro = []
-
     }
     adicionarLivro() {
         let nome = document.querySelector("#cadastroNome").value
@@ -17,13 +17,15 @@ class Adicionar {
         let preco = document.querySelector("#cadastroPreco").value
         let capa = document.querySelector("#cadastroCapa").value
         const novoLivro = new livrosAdd(nome, autor, editora, preco, capa)
-
+        
+        this.cadastroDeLivro = JSON.parse(localStorage.getItem("livrosdoUsuario")) || []
         this.cadastroDeLivro.push(novoLivro)
         console.log(this.cadastroDelivro, novoLivro)
         
        
         add.exibirLivros(novoLivro)
         add.limparForm()
+        localStorage.setItem("livrosdoUsuario", JSON.stringify(this.cadastroDeLivro))
     }
 
     dispararButton() {
@@ -85,19 +87,64 @@ class Adicionar {
 }
 const add = new Adicionar()
 add.dispararButton()
+add.listarLivros()
 
-const livrosIniciais = [{ nome: "Pequeno manual antirracista",  autor: "Djamila Ribeiro", editora: "Companhia das Letras", preco: 34.99 , capa: "./images/anti.jpeg"},
-                    { nome: "O passeador de livros",  autor: "Carsten Henn", editora: "Intrinseca", preco: 50.99 , capa: "./images/passeador.jpeg"},
-                    { nome: "A Promessa / A Pane",  autor: "Friedrich Durrenmatt", editora: "Estação Liberdade", preco: 94.99 , capa: "./images/promessa.jpeg"}];
+const sair = 0
+const cadastrar = 1
+const buscar = 2
+const remover = 3
+const listar = 4
 
-    livrosIniciais.forEach(item =>{
-        add.cadastroDeLivro.push(item)
-        add.exibirLivros(item)
-    });
+const escolha = () => {
+    return `
+       0 - Sair
+       1 - Adicionar Livro
+       2 - Buscar Livros
+       3 - remover Livro
+       4 - Listar Livros`
+}
 
-// Armazenar livros iniciais em JSON no Local Storage
-const saveInitialBooks = (chave, valor) => { localStorage.setItem(chave, valor) };
-saveInitialBooks("listaLivrosIniciais", JSON.stringify(livrosIniciais));
+// function livraria(){
+// const add = new Adicionar()
+//    let menu
+//     do{
+//          menu =parseInt( prompt ("Escolha: "+ escolha()))
+
+//          switch(menu){
+
+//             case cadastrar:
+//               add.adicionarLivro()
+//                 break
+
+//             case buscar:
+//                 let busca = prompt("Digite o livro que deseja buscar")
+//                 add.buscarLivros(busca)
+//                 break
+
+//             case remover:
+//                 let indice = parseInt( prompt ("Escolha o índice que deseja remover:"))
+//                 add.removerlivro(indice)
+//                 break
+
+//             case listar:
+//                 add.listarLivros()
+//                 break
+
+//             case sair:
+//                 alert ("até logo")
+//                 break
+
+//                 default:
+//                     alert(
+//                         "Opção inválida! Escolha uma das opções abaixo:" + escolha())
+//          }
+
+//     }while (menu != sair)
+
+
+//     }
+// livraria()
+
 
 
 function abrirModal() {
