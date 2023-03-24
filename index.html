@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-</head>
 
+</head>
 <body>
     <section>
-        <div id="cadastro-modal">
-            <div id="cadastro-modal-wrapper">
-                <div class="header">
-                    <div class="title">
-                        <h3>Adicionar Livro</h3>
+            <div id="cadastro-modal">
+                <div id="cadastro-modal-wrapper">
+                    <div class="header">
+                        <div class="title">
+                            <h3>Adicionar Livro</h3>
+                        </div>
+                        <div class="cta">
+                            <button class="closeButton" onClick="fecharModal()"><p> </p> </button>
+                        </div>
                     </div>
-                    <div class="cta">
-                        <button class="closeButton" onClick="fecharModal()">
-                            <p> </p>
-                        </button>
-                    </div>
+                    <label class="formLabel" for="cadastroNome"> Nome do Livro:<input type="text" class="formInput" id="cadastroNome" placeholder="Título do livro"></label>
+                    <label class="formLabel" for="cadastroAutor"> Autor:<input type="text" class="formInput" id="cadastroAutor" placeholder="Nome do autor"></label>
+                    <label class="formLabel" for="cadastroEditora"> Editora:<input type="text" class="formInput" id="cadastroEditora" placeholder="Nome da Editora"></label>
+                    <label class="formLabel" for="cadastroPreco"> Preço:<input type="text" class="formInput" id="cadastroPreco" placeholder="R$ 00,00"></label>
+                    <label class="formLabel" for="cadastroCapa"> Imagem da capa:<input type="url" class="formInput" id="cadastroCapa" placeholder="Imagem da capa"></label>
+                    <button class="primaryButton" id="buttonSubmit"> Cadastrar</button>
                 </div>
             </div>
             <div class="comprarModal">         
                 <div class="comprarModalWrapper">
                     <button class="closeButton" onClick="closeCompraModal()"><p> </p> </button>
-                    <div class="comprarModalCard">
-                        <img class="cardImgModal" src="./images/anti.jpeg">
-                        <h3 class="ComprarModalCardDescription">Descrição<br><p>Neste pequeno manual, a filósofa e ativista Djamila Ribeiro trata de temas como atualidade do racismo, negritude, branquitude, violência racial, cultura, desejos e afetos.</p></h3>
+                    <div class="comprarModalCard" id="bookCover">
+                        
                     </div>
-             
                     <div class="comprarModalSelect">
-                        <h3 class="cardTitle comprarCardTitle">Pequeno manual antirracista</h3>
+                        <h3 class="cardTitle comprarCardTitle" id="bookTitle"> </h3>
+                        <p class="cardDetails" id="bookAuthor"> </p>
+                        <p class="cardDetails" id="bookPublisher"> </p>
                         <div class="comprarModalSelectQuant">
                             <div class="comprarModalSelectQuantPreco">
                                 <h2 class="cifrao">R$</h2>
-                                <h2 class="preco">34,90</h2>
+                                <h2 class="preco" id="bookPrice"> </h2>
                             </div>
                             <div class="comprarModalSelectQuantSet">
                                 <button class="buttonMenos" onClick="compraSetItens.menos()"> - </button>
@@ -49,7 +51,7 @@
                         </div>
                      </div>
                 </div>
-            </div>
+            </div> 
         </section>
         <section class="wrapper"> 
             <div class="header">
@@ -62,7 +64,7 @@
             </div>
             <div id="mostrar">
                 <ul id="book-list">
-                    <li class="li-book-container">
+                    <!-- <li class="li-book-container">
                         <div class="book_container">
                         <div class="cardImgcontainer">
                             <img class="cardImg" src="./images/anti.jpeg">
@@ -74,9 +76,16 @@
                         <button class="buyButton" onClick="openCompraModal()">comprar</button>
                         </div>
                     </li>
-                    <li class="navbarContentItens">
-                        <div class="cta">
-                            <button class="primaryButton" onClick="abrirModal()">Adicionar Livro</button>
+                    <li class="li-book-container">
+                        <div class="book_container">
+                        <div class="cardImgcontainer">
+                            <img class="cardImg" src="https://m.media-amazon.com/images/I/81nNCJpeHpL.jpg">
+                        </div>
+                        <h3 class="cardTitle">O passeador de livros</h3>
+                        <h4 class="cardPrice">R$ 54,90</h4>
+                        <p class="cardDetails">Carsten Henn</p>
+                        <p class="cardDetails">Intrinseca</p>
+                        <button class="buyButton" onClick="openCompraModal()">Comprar</button>
                         </div>
                     </li>
                     <li class="li-book-container">
@@ -90,20 +99,11 @@
                         <p class="cardDetails">Estação Liberdade</p>
                         <button class="buyButton" onClick="abrirCompraModal()">Comprar</button>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
-                
-              </nav>
-            
-        </div>
-        <div id="mostrar">
-            <ul id="book-list">
-            </ul>
-        </div>
-    </header>
-    <script src='main.js'></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+             </div>    
+    </section>
+<script src='main.js'></script>
 
 </body>
-
 </html>
