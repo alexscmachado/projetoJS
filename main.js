@@ -9,6 +9,8 @@ function livrosAdd(nome, autor, editora, preco, capa) {
 class Adicionar {
     constructor() {
         this.cadastroDeLivro = []
+        this.cadastroDeLivro = JSON.parse(localStorage.getItem("listaLivrosIniciais")) 
+        this.cadastroDeLivro.push(JSON.parse(localStorage.getItem("livrosdoUsuario")))
     }
     adicionarLivro() {
         let nome = document.querySelector("#cadastroNome").value
@@ -18,9 +20,8 @@ class Adicionar {
         let capa = document.querySelector("#cadastroCapa").value
         const novoLivro = new livrosAdd(nome, autor, editora, preco, capa)
         
-        this.cadastroDeLivro = JSON.parse(localStorage.getItem("livrosdoUsuario")) || []
         this.cadastroDeLivro.push(novoLivro)
-        console.log(this.cadastroDelivro, novoLivro)
+        console.log(this.cadastroDeLivro)
 
         add.exibirLivros(novoLivro)
         add.limparForm()
@@ -32,22 +33,29 @@ class Adicionar {
         button.onclick = () => {
             this.adicionarLivro();
             fecharModal();
+
+            
         }
     }
 
-    buscarLivros(busca) {
-        let livroNaoEncontrado = true
-        this.cadastroDeLivro.forEach(element => {
-            if (element.nome == busca) {
-                livroNaoEncontrado = false
-                alert("Livros encontrados:" + "\n" + element.nome + "\n" + "R$" + " " + element.preco)
-            }
-
-        });
-        if (livroNaoEncontrado == true) {
-            alert("Nenhum livro encontrado com o título " + busca)
-        }
+    buscarLivros(chaveBusca) {
+        let livroEcontrado = this.cadastroDeLivro.find(element => element?.nome.includes(chaveBusca))
+        console.log(this.cadastroDeLivro)
+        livroEcontrado ? alert("Livro encontrado: " + chaveBusca) : alert("Nenhum livro encontrado com o título " + chaveBusca)
     }
+        
+        // Busca no formato antigo
+        // let livroNaoEncontrado = true
+        // this.cadastroDeLivro.forEach(element => {
+        //     if (element.nome == busca) {
+        //         livroNaoEncontrado = false
+        //         alert("Livros encontrados:" + "\n" + element.nome + "\n" + "R$" + " " + element.preco)
+        //     }
+        // });
+        // if (livroNaoEncontrado == true) {
+        //     alert("Nenhum livro encontrado com o título " + busca)
+        // }
+    
 
     exibirLivros(livro){
         const container = document.getElementById('book-list')
@@ -69,7 +77,7 @@ class Adicionar {
 
             // Append newyly created card element to the container
             container.innerHTML += content
-            //}
+        
     }
 
     removerlivro(indice) {
@@ -83,9 +91,17 @@ class Adicionar {
         document.querySelector("#cadastroPreco").value = ""
         document.querySelector("#cadastroCapa").value = ""
     }
+    
 }
 const add = new Adicionar()
 add.dispararButton()
+
+function novaBusca(){
+    let chaveBusca = document.querySelector("#searchInput").value
+    add.buscarLivros(chaveBusca)
+}
+
+
 
 //Adicionar Livros para carregamento inicial da página
 const livrosIniciais = [{ nome: "Pequeno manual antirracista",  autor: "Djamila Ribeiro", editora: "Companhia das Letras", preco: 34.99 , capa: "./images/anti.jpeg"},
@@ -96,13 +112,14 @@ const livrosIniciais = [{ nome: "Pequeno manual antirracista",  autor: "Djamila 
         add.exibirLivros(item)
     });
 
+
 // Armazenar livros em JSON no Local Storage
 const saveBooksLS = (chave, valor) => { localStorage.setItem(chave, valor) };
 saveBooksLS("listaLivrosIniciais", JSON.stringify(livrosIniciais))
 
+
 //Exibir livros salvos no local storage
 const livrosUsuario = JSON.parse(localStorage.getItem("livrosdoUsuario"))
-    console.log(livrosUsuario)
     livrosUsuario.forEach(item =>{
         add.exibirLivros(item)
     });
@@ -172,6 +189,8 @@ function abrirModal() {
 // Fechar modal
 function fecharModal() {
     document.getElementById("cadastro-modal").style.display = 'none';
+      swal("Sucesso", "Livro Cadastrado com Sucesso", "success");
+
 }
 
 // Exibir modal de compra
@@ -228,9 +247,10 @@ class ComprarItens {
     }
 }
 
+
+
 let compraSetItens = new ComprarItens()
 livraria()
 compraSetItens.plus()
 compraSetItens.menos()
-
 
