@@ -5,10 +5,12 @@ function livrosAdd(nome, autor, editora, preco, capa) {
     this.preco = preco
     this.capa = capa
 }
+
 class Adicionar {
     constructor() {
         this.cadastroDeLivro = []
-
+        this.cadastroDeLivro = JSON.parse(localStorage.getItem("listaLivrosIniciais")) 
+        this.cadastroDeLivro.push(JSON.parse(localStorage.getItem("livrosdoUsuario")))
     }
     adicionarLivro() {
         let nome = document.querySelector("#cadastroNome").value
@@ -17,10 +19,9 @@ class Adicionar {
         let preco = document.querySelector("#cadastroPreco").value
         let capa = document.querySelector("#cadastroCapa").value
         const novoLivro = new livrosAdd(nome, autor, editora, preco, capa)
-
-        this.cadastroDeLivro = JSON.parse(localStorage.getItem("livrosdoUsuario")) || []
+        
         this.cadastroDeLivro.push(novoLivro)
-        console.log(this.cadastroDelivro, novoLivro)
+        console.log(this.cadastroDeLivro)
 
         add.exibirLivros(novoLivro)
         add.limparForm()
@@ -32,22 +33,29 @@ class Adicionar {
         button.onclick = () => {
             this.adicionarLivro();
             fecharModal();
+
+            
         }
     }
 
-    buscarLivros(busca) {
-        let livroNaoEncontrado = true
-        this.cadastroDeLivro.forEach(element => {
-            if (element.nome == busca) {
-                livroNaoEncontrado = false
-                alert("Livros encontrados:" + "\n" + element.nome + "\n" + "R$" + " " + element.preco)
-            }
-
-        });
-        if (livroNaoEncontrado == true) {
-            alert("Nenhum livro encontrado com o título " + busca)
-        }
+    buscarLivros(chaveBusca) {
+        let livroEcontrado = this.cadastroDeLivro.find(element => element?.nome.includes(chaveBusca))
+        console.log(this.cadastroDeLivro)
+        livroEcontrado ? alert("Livro encontrado: " + chaveBusca) : alert("Nenhum livro encontrado com o título " + chaveBusca)
     }
+        
+        // Busca no formato antigo
+        // let livroNaoEncontrado = true
+        // this.cadastroDeLivro.forEach(element => {
+        //     if (element.nome == busca) {
+        //         livroNaoEncontrado = false
+        //         alert("Livros encontrados:" + "\n" + element.nome + "\n" + "R$" + " " + element.preco)
+        //     }
+        // });
+        // if (livroNaoEncontrado == true) {
+        //     alert("Nenhum livro encontrado com o título " + busca)
+        // }
+    
 
     exibirLivros(livro){
         const container = document.getElementById('book-list')
@@ -69,7 +77,7 @@ class Adicionar {
 
             // Append newyly created card element to the container
             container.innerHTML += content
-            //}
+        
     }
 
     removerlivro(indice) {
@@ -83,29 +91,96 @@ class Adicionar {
         document.querySelector("#cadastroPreco").value = ""
         document.querySelector("#cadastroCapa").value = ""
     }
+    
 }
 const add = new Adicionar()
 add.dispararButton()
 
+function novaBusca(){
+    let chaveBusca = document.querySelector("#searchInput").value
+    add.buscarLivros(chaveBusca)
+}
+
+
+
+//Adicionar Livros para carregamento inicial da página
 const livrosIniciais = [{ nome: "Pequeno manual antirracista",  autor: "Djamila Ribeiro", editora: "Companhia das Letras", preco: 34.99 , capa: "./images/anti.jpeg"},
                     { nome: "O passeador de livros",  autor: "Carsten Henn", editora: "Intrinseca", preco: 50.99 , capa: "./images/passeador.jpeg"},
                     { nome: "A Promessa / A Pane",  autor: "Friedrich Durrenmatt", editora: "Estação Liberdade", preco: 94.99 , capa: "./images/promessa.jpeg"}];
 
     livrosIniciais.forEach(item =>{
-        add.cadastroDeLivro.push(item)
         add.exibirLivros(item)
     });
 
-// Armazenar livros iniciais em JSON no Local Storage
-const saveInitialBooks = (chave, valor) => { localStorage.setItem(chave, valor) };
-saveInitialBooks("listaLivrosIniciais", JSON.stringify(livrosIniciais));
+
+// Armazenar livros em JSON no Local Storage
+const saveBooksLS = (chave, valor) => { localStorage.setItem(chave, valor) };
+saveBooksLS("listaLivrosIniciais", JSON.stringify(livrosIniciais))
+
 
 //Exibir livros salvos no local storage
 const livrosUsuario = JSON.parse(localStorage.getItem("livrosdoUsuario"))
-    console.log(livrosUsuario)
     livrosUsuario.forEach(item =>{
         add.exibirLivros(item)
     });
+
+// const sair = 0
+// const cadastrar = 1
+// const buscar = 2
+// const remover = 3
+// const listar = 4
+
+// const escolha = () => {
+//     return `
+//        0 - Sair
+//        1 - Adicionar Livro
+//        2 - Buscar Livros
+//        3 - remover Livro
+//        4 - Listar Livros`
+// }
+
+// function livraria(){
+// const add = new Adicionar()
+//    let menu
+//     do{
+//          menu =parseInt( prompt ("Escolha: "+ escolha()))
+
+//          switch(menu){
+
+//             case cadastrar:
+//               add.adicionarLivro()
+//                 break
+
+//             case buscar:
+//                 let busca = prompt("Digite o livro que deseja buscar")
+//                 add.buscarLivros(busca)
+//                 break
+
+//             case remover:
+//                 let indice = parseInt( prompt ("Escolha o índice que deseja remover:"))
+//                 add.removerlivro(indice)
+//                 break
+
+//             case listar:
+//                 add.listarLivros()
+//                 break
+
+//             case sair:
+//                 alert ("até logo")
+//                 break
+
+//                 default:
+//                     alert(
+//                         "Opção inválida! Escolha uma das opções abaixo:" + escolha())
+//          }
+
+//     }while (menu != sair)
+
+
+//     }
+// livraria()
+
+// Exibir modal de cadastro de livro
 function abrirModal() {
     const modal = document.getElementById("cadastro-modal");
     modal.style.display = 'flex';
@@ -114,6 +189,8 @@ function abrirModal() {
 // Fechar modal
 function fecharModal() {
     document.getElementById("cadastro-modal").style.display = 'none';
+      swal("Sucesso", "Livro Cadastrado com Sucesso", "success");
+
 }
 
 // Exibir modal de compra
@@ -137,8 +214,7 @@ function openCompraModal(nomeLivro) {
 function closeCompraModal() {
     document.querySelector(".comprarModal").style.display = "none";
 }
-
-let =  document.querySelector(".inputNumber").value = 1
+let = document.querySelector(".inputNumber").value = 1
 
 class ComprarItens {
     constructor() {
@@ -151,10 +227,9 @@ class ComprarItens {
         document.querySelector(".inputNumber").value = novo    
         let changeValor = document.querySelector(".preco")
         let valorAtual = 34.90
-            let quant = novo
+        let quant = novo
         let valorNovo = quant*valorAtual
-        changeValor.innerHTML = valorNovo.toFixed(2)
-        
+        changeValor.innerHTML = valorNovo
     }
     menos() {
         let atual=document.querySelector(".inputNumber").value    
@@ -165,12 +240,14 @@ class ComprarItens {
             let valorAtual = 34.90
             let quant = novo
             let valorNovo = quant*valorAtual
-            changeValor.innerHTML = valorNovo.toFixed(2)
-                    
+            changeValor.innerHTML = valorNovo
+           
         }
        
     }
 }
+
+
 
 let compraSetItens = new ComprarItens()
 livraria()
