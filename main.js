@@ -9,8 +9,18 @@ function livrosAdd(nome, autor, editora, preco, capa) {
 class Adicionar {
     constructor() {
         this.cadastroDeLivro = []
-        this.cadastroDeLivro = JSON.parse(localStorage.getItem("listaLivrosIniciais")) 
-        this.cadastroDeLivro.push(JSON.parse(localStorage.getItem("livrosdoUsuario")))
+        this.cadastroDeLivro = JSON.parse(localStorage.getItem("listaLivrosIniciais"))
+
+        // Adicionar ao array livros do usuário que estão em local storage, se houver, e exibi-los
+        const userSavedBooks = (JSON.parse(localStorage.getItem("livrosdoUsuario")));
+        function verifyUserSavedBooks(userSavedBooks){
+            if(userSavedBooks > 0){
+                this.cadastroDeLivro.push(JSON.parse(localStorage.getItem("livrosdoUsuario")))
+            }
+            userSavedBooks.forEach(item =>{
+                add.exibirLivros(item)
+            });
+        }
     }
     adicionarLivro() {
         let nome = document.querySelector("#cadastroNome").value
@@ -33,16 +43,18 @@ class Adicionar {
         button.onclick = () => {
             this.adicionarLivro();
             fecharModal();
-
-            
         }
     }
 
     buscarLivros(chaveBusca) {
         let livroEcontrado = this.cadastroDeLivro.find(element => element?.nome.includes(chaveBusca))
         console.log(this.cadastroDeLivro)
-        livroEcontrado ? alert("Livro encontrado: " + chaveBusca) : alert("Nenhum livro encontrado com o título " + chaveBusca)
+        console.log(livroEcontrado)
+        livroEcontrado ? swal({title: "Livro Cadastrado", text: "O livro " + livroEcontrado.nome + " está disponível", icon: livroEcontrado.capa, button: "OK",}) : swal({text: "Nenhum livro encontrado com o título " + chaveBusca, icon: "error", button: "OK",})
+            chaveBusca = " "
     }
+
+    
         
         // Busca no formato antigo
         // let livroNaoEncontrado = true
@@ -117,12 +129,6 @@ const livrosIniciais = [{ nome: "Pequeno manual antirracista",  autor: "Djamila 
 const saveBooksLS = (chave, valor) => { localStorage.setItem(chave, valor) };
 saveBooksLS("listaLivrosIniciais", JSON.stringify(livrosIniciais))
 
-
-//Exibir livros salvos no local storage
-const livrosUsuario = JSON.parse(localStorage.getItem("livrosdoUsuario"))
-    livrosUsuario.forEach(item =>{
-        add.exibirLivros(item)
-    });
 
 // const sair = 0
 // const cadastrar = 1
