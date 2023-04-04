@@ -104,6 +104,20 @@ p{
     background-color: #0d8598;
 
 }
+
+.swal-button {
+    background-color: #17a2b8;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: 1px solid #17a2b8;
+    cursor: pointer;
+  }
+  .swal-icon img{
+    max-width: 100px;
+    max-height: 100%;
+  }
+
 .searchButton{
     color: #fff;
     padding: 8px 16px;
@@ -142,6 +156,8 @@ p{
     height: auto;
     margin: auto;
 }
+
+
 
 .closeButton{
     background-color: #fff;
