@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -8,67 +9,105 @@
     <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
 
 </head>
+
 <body>
     <section>
-            <div id="cadastro-modal">
-                <div id="cadastro-modal-wrapper">
-                    <div class="header">
-                        <div class="title">
-                            <h3>Adicionar Livro</h3>
+        <div id="cadastro-modal">
+            <div id="cadastro-modal-wrapper">
+                <div class="header">
+                    <div class="title">
+                        <h3>Adicionar Livro</h3>
+                    </div>
+                    <div class="cta">
+                        <button class="closeButton" onClick="fecharModal()">
+                            <p> </p>
+                        </button>
+                    </div>
+                </div>
+                <label class="formLabel" for="cadastroNome"> Nome do Livro:<input type="text" class="formInput"
+                        id="cadastroNome" placeholder="Título do livro"></label>
+                <label class="formLabel" for="cadastroAutor"> Autor:<input type="text" class="formInput"
+                        id="cadastroAutor" placeholder="Nome do autor"></label>
+                <label class="formLabel" for="cadastroEditora"> Editora:<input type="text" class="formInput"
+                        id="cadastroEditora" placeholder="Nome da Editora"></label>
+                <label class="formLabel" for="cadastroPreco"> Preço:<input type="text" class="formInput"
+                        id="cadastroPreco" placeholder="R$ 00,00"></label>
+                <label class="formLabel" for="cadastroCapa"> Imagem da capa:<input type="url" class="formInput"
+                        id="cadastroCapa" placeholder="Imagem da capa"></label>
+                <button class="primaryButton" id="buttonSubmit"> Cadastrar</button>
+            </div>
+        </div>
+        <div class="comprarModal">
+            <div class="comprarModalWrapper">
+                <button class="closeButton" onClick="closeCompraModal()">
+                    <p> </p>
+                </button>
+                <div class="comprarModalCard" id="bookCover">
+
+                </div>
+                <div class="comprarModalSelect">
+                    <h3 class="cardTitle comprarCardTitle" id="bookTitle"> </h3>
+                    <p class="cardDetails" id="bookAuthor"> </p>
+                    <p class="cardDetails" id="bookPublisher"> </p>
+                    <div class="comprarModalSelectQuant">
+                        <div class="comprarModalSelectQuantPreco">
+                            <h2 class="cifrao">R$</h2>
+                            <h2 class="preco" id="bookPrice"> </h2>
                         </div>
-                        <div class="cta">
-                            <button class="closeButton" onClick="fecharModal()"><p> </p> </button>
+                        <div class="comprarModalSelectQuantSet">
+                            <button class="buttonMenos" onClick="compraSetItens.menos()"> - </button>
+                            <input type="number" class="inputNumber">
+                            <button class="buttonMais" onClick="compraSetItens.plus()"> + </button>
                         </div>
                     </div>
-                    <label class="formLabel" for="cadastroNome"> Nome do Livro:<input type="text" class="formInput" id="cadastroNome" placeholder="Título do livro"></label>
-                    <label class="formLabel" for="cadastroAutor"> Autor:<input type="text" class="formInput" id="cadastroAutor" placeholder="Nome do autor"></label>
-                    <label class="formLabel" for="cadastroEditora"> Editora:<input type="text" class="formInput" id="cadastroEditora" placeholder="Nome da Editora"></label>
-                    <label class="formLabel" for="cadastroPreco"> Preço:<input type="text" class="formInput" id="cadastroPreco" placeholder="R$ 00,00"></label>
-                    <label class="formLabel" for="cadastroCapa"> Imagem da capa:<input type="url" class="formInput" id="cadastroCapa" placeholder="Imagem da capa"></label>
-                    <button class="primaryButton" id="buttonSubmit"> Cadastrar</button>
-                </div>
-            </div>
-            <div class="comprarModal">         
-                <div class="comprarModalWrapper">
-                    <button class="closeButton" onClick="closeCompraModal()"><p> </p> </button>
-                    <div class="comprarModalCard" id="bookCover">
-                        
-                    </div>
-                    <div class="comprarModalSelect">
-                        <h3 class="cardTitle comprarCardTitle" id="bookTitle"> </h3>
-                        <p class="cardDetails" id="bookAuthor"> </p>
-                        <p class="cardDetails" id="bookPublisher"> </p>
-                        <div class="comprarModalSelectQuant">
-                            <div class="comprarModalSelectQuantPreco">
-                                <h2 class="cifrao">R$</h2>
-                                <h2 class="preco" id="bookPrice"> </h2>
-                            </div>
-                            <div class="comprarModalSelectQuantSet">
-                                <button class="buttonMenos" onClick="compraSetItens.menos()"> - </button>
-                                <input type="number" class ="inputNumber">
-                                <button class="buttonMais" onClick="compraSetItens.plus()"> + </button>
+                    <div id="compraFrete">
+
+                        <h3> Onde você está ?</h3>
+                        <p>Informe sua localização para calcularmos os valores de frete.</p>
+                        <div class="calculoFrete">
+                            <input type="text" placeholder="Número do CEP" id="compraFreteInput">
+                            <button type="submit" class="buttonFrete">Enviar </button>
+                        </div>
+                        <div id="compraComFrete">
+                            <h4 class="compraFreteTitle"> Entrega</h4>
+                            <div class="modalFrete">
+                                <p>Padrão</p>
+
+                                <p> R$ 10,00. Entrega em 5 dias úteis</p>
                             </div>
                         </div>
-                     </div>
-                </div>
-            </div> 
-        </section>
-        <section class="wrapper"> 
-            <div class="header">
-                <div class="title">
-                    <h1>Livraria </h1>
-                </div>
-                <div class="searchBar">
-                    <input type="text" class="searchInput" id="searchInput" placeholder="Pesquisar..." name="search">
-                    <button type="submit" class="searchButton" onClick="novaBusca()"></button>
-                </div>
-                <div class="cta">
-                    <button class="primaryButton" onClick="abrirModal()">Adicionar Livro</button>
+                        <div id="compraSemFrete">
+                            <h4 class="compraFreteTitle"> Entrega</h4>
+                            <div class="modalFrete">
+                                <p> Frete grátis. Entrega em 5 dias úteis</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+
+                        <button class="buttonComprar" onClick=""> COMPRAR </button>
+                    </div>
+
                 </div>
             </div>
-            <div id="mostrar">
-                <ul id="book-list">
-                    <!-- <li class="li-book-container">
+        </div>
+    </section>
+    <section class="wrapper">
+        <div class="header">
+            <div class="title">
+                <h1>Livraria </h1>
+            </div>
+            <div class="searchBar">
+                <input type="text" class="searchInput" id="searchInput" placeholder="Pesquisar..." name="search">
+                <button type="submit" class="searchButton" onClick="novaBusca()"></button>
+            </div>
+            <div class="cta">
+                <button class="primaryButton" onClick="abrirModal()">Adicionar Livro</button>
+            </div>
+        </div>
+        <div id="mostrar">
+            <ul id="book-list">
+                <!-- <li class="li-book-container">
                         <div class="book_container">
                         <div class="cardImgcontainer">
                             <img class="cardImg" src="./images/anti.jpeg">
@@ -104,12 +143,13 @@
                         <button class="buyButton" onClick="abrirCompraModal()">Comprar</button>
                         </div>
                     </li> -->
-                </ul>
-             </div>    
+            </ul>
+        </div>
     </section>
-<script src='main.js'></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src='main.js'></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
 </body>
+
 </html>

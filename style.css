@@ -57,7 +57,8 @@ p{
 .cardDetails{
 	color: #888;
 	margin: 0px;	
-	line-height: 130%;	
+	line-height: 130%;
+    margin-left: 10px;
 }
 .cardTitle{
     line-height: 180%;	
@@ -185,6 +186,7 @@ p{
     position: absolute;
     z-index: 3;
 }
+
 .comprarModalWrapper{
     padding: 16px;
     background-color: #fff;
@@ -193,7 +195,7 @@ p{
     justify-content: space-evenly;
     gap: 10px;
     width: 60%;
-    height: 50%;
+    height: 90%;
     margin: auto;
     
 }
@@ -220,15 +222,21 @@ p{
     border: solid;
 }
 .comprarModalSelect{
-    width: 40%;
-    height: 60%;
-    background-color: bisque;
+     width: 60%;
+    height: 70%;
+    background-color: white;
+    border: #888  solid  1px;
+    box-shadow: 5px 5px 5px 3px teal;
+    margin-top: 100px;
+    margin-right: 15px;
     
 }
 .comprarCardTitle{
-    padding: 20px;
+   padding: 30px;
     color: black;
     font-size: 25px;
+    margin-left: 40px;
+   font-weight: bold;
 }
 .comprarModalSelectQuant{
    
@@ -266,4 +274,68 @@ p{
     background-color: #bababa;
     font-size: 16px;
     border: none;
+}
+.buttons{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+   
+    height: 200px;
+}
+.buttonAdicionar{
+
+    width: 70%;
+    height: 20%;
+    background-color: yellow;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    
+}
+.buttonComprar{
+
+    width: 70%;
+    height: 20%;
+    background-color: yellow;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+#compraFrete{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap:10px;
+}
+.calculoFrete{
+    width: auto;
+    display:flex;
+    flex-direction: row;
+    gap:10px;
+}
+#compraFreteInput{
+    width: 150px;
+    padding: 5px;
+}
+.compraFreteTitle{
+    color: red;
+}
+.modalFrete{
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#compraComFrete{
+    display: none;
+}
+#compraSemFrete{
+    display: none;
+}
+
+.buttonFrete{
+    width: 60px;
+    height: 30px;
 }

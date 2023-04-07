@@ -13,29 +13,41 @@ class Adicionar {
         this.cadastroDeLivro.push(JSON.parse(localStorage.getItem("livrosdoUsuario")))
     }
     adicionarLivro() {
+        
         let nome = document.querySelector("#cadastroNome").value
         let autor = document.querySelector("#cadastroAutor").value
         let editora = document.querySelector("#cadastroEditora").value
         let preco = document.querySelector("#cadastroPreco").value
         let capa = document.querySelector("#cadastroCapa").value
         const novoLivro = new livrosAdd(nome, autor, editora, preco, capa)
-        
+      
         this.cadastroDeLivro.push(novoLivro)
         console.log(this.cadastroDeLivro)
 
         add.exibirLivros(novoLivro)
+        add.verificacao()
         add.limparForm()
         localStorage.setItem("livrosdoUsuario", JSON.stringify(this.cadastroDeLivro))
+       
+    }
+
+    verificacao( ){
+        if(novoLivro.nome==" "){
+            alert("oi")
+        }
+        
     }
 
     dispararButton() {
         let button = document.getElementById("buttonSubmit")
         button.onclick = () => {
+         
             this.adicionarLivro();
-            fecharModal();
-
-            
+            //  fecharModal(); 
+             
+             
         }
+      
     }
 
     buscarLivros(chaveBusca) {
@@ -95,6 +107,7 @@ class Adicionar {
 }
 const add = new Adicionar()
 add.dispararButton()
+
 
 function novaBusca(){
     let chaveBusca = document.querySelector("#searchInput").value
@@ -189,7 +202,7 @@ function abrirModal() {
 // Fechar modal
 function fecharModal() {
     document.getElementById("cadastro-modal").style.display = 'none';
-      swal("Sucesso", "Livro Cadastrado com Sucesso", "success");
+    //   swal("Sucesso", "Livro Cadastrado com Sucesso", "success");
 
 }
 
