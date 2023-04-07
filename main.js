@@ -41,13 +41,6 @@ class Adicionar {
        
     }
 
-    verificacao( ){
-        if(novoLivro.nome==" "){
-            alert("oi")
-        }
-        
-    }
-
     dispararButton() {
         let button = document.getElementById("buttonSubmit")
         button.onclick = () => {
@@ -210,7 +203,7 @@ function abrirModal() {
 // Fechar modal
 function fecharModal() {
     document.getElementById("cadastro-modal").style.display = 'none';
-    //   swal("Sucesso", "Livro Cadastrado com Sucesso", "success");
+      swal("Sucesso", "Livro Cadastrado com Sucesso", "success");
 
 }
 
