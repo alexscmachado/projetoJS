@@ -243,7 +243,7 @@ class ComprarItens {
         let valorAtual = 34.90
         let quant = novo
         let valorNovo = quant*valorAtual
-        changeValor.innerHTML = valorNovo
+        changeValor.innerHTML = valorNovo.toFixed(2)
     }
     menos() {
         let atual=document.querySelector(".inputNumber").value    
@@ -254,17 +254,61 @@ class ComprarItens {
             let valorAtual = 34.90
             let quant = novo
             let valorNovo = quant*valorAtual
-            changeValor.innerHTML = valorNovo
+            changeValor.innerHTML = valorNovo.toFixed(2)
            
         }
        
     }
 }
-
-
-
 let compraSetItens = new ComprarItens()
-livraria()
+
 compraSetItens.plus()
 compraSetItens.menos()
+const cep=document.querySelector("#cep")
+
+const mostrarDados=(result)=>{
+    for (const campo in result){
+        console.log(campo)
+        if(document.querySelector("#"+campo)){
+            document.querySelector("#"+campo).value=result[campo]
+           
+            }
+        }  
+        if(result.uf=="RJ"){
+            swal("frete grátis!" );
+    
+           }else{
+           document.querySelector("#compraComFrete").style.display="flex" // swal("Frete Pago!" + valorNovo);
+           }
+        
+}
+
+cep.addEventListener("blur",(e)=>{
+    
+    console.log(cep.value)
+
+    const options = {
+        method: `GET`,
+        mode:`cors`,
+        cache: `defalut`
+    }
+    fetch(`http://viacep.com.br/ws/${cep.value}/json/`)
+    .then(resposta=> {resposta.json()
+        .then( dados =>{ mostrarDados(dados)} )
+        })
+        .catch( e=>console.log(`Deu erro` + e))
+})
+  
+function limparCadastro(){
+    document.querySelector("#cep").value =" "
+    result.uf =" "
+    document.querySelector("#logradouro").value =" "
+    document.querySelector("#uf").value =" "
+    document.querySelector("#bairro").value =" "
+
+}
+limparCadastro()
+
+livraria()
+
 
