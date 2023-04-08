@@ -227,6 +227,10 @@ function openCompraModal(nomeLivro) {
 
 function closeCompraModal() {
     document.querySelector(".comprarModal").style.display = "none";
+    document.querySelector("#compraSemFrete").style.display="none";
+    document.querySelector("#compraComFrete").style.display="flex";
+    
+    
 }
 let = document.querySelector(".inputNumber").value = 1
 
@@ -260,6 +264,50 @@ class ComprarItens {
        
     }
 }
+
+function  abrirFreteModal (){
+  
+
+    document.querySelector("#compraFrete").style.display="flex"
+    
+}
+abrirFreteModal()
+function fecharFreteModal (){
+        document.querySelector("#compraFrete").style.display="none"
+     
+}
+
+fecharFreteModal()
+
+const cep = document.querySelector("#cep")
+const mostrarDados=(result)=>{
+    for (const campo in result){
+        if(document.querySelector("#"+campo)){
+            document.querySelector("#"+campo).value=result[campo]
+           
+            }
+        }  
+        if(result.uf=="RJ"){
+            swal("frete grátis!");
+    
+           }else{
+            swal("Frete Pago!");
+           }
+        
+}
+cep.addEventListener("blur",(e)=>{
+    let search = cep.value
+    const options = {
+        method: "GET",
+        mode:"cors",
+        cache: "defalut"
+    }
+    fetch(`http://viacep.com.br/ws/${search}/json/`)
+    .then(resposta=> {resposta.json()
+        .then( dados =>{ mostrarDados(dados)} )
+        })
+        .catch( e=>console.log(`Deu erro` + e))
+})
 
 
 

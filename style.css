@@ -169,6 +169,15 @@ p{
     padding: 8px;
     cursor: pointer;
 }
+.closeButtonFrete{
+    background-color: #fff;
+    border: none;
+    background-image: url(https://img.icons8.com/material-outlined/512/delete-sign.png);
+    background-repeat: no-repeat;
+    background-size: 14px;
+    padding: 8px;
+    cursor: pointer;
+}
 .closeButton:hover{
     background-size: 12px;
 }
@@ -343,6 +352,14 @@ p{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+#compraFrete{
+    display: flex;
+   
+}
+.dadosDoUsuario{
+    display: flex;
+    flex-direction: column;
 }
 #compraComFrete{
     display: none;
