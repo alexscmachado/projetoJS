@@ -42,59 +42,57 @@
                 <button class="closeButton" onClick="closeCompraModal()">
                     <p> </p>
                 </button>
-                <div class="comprarModalCard" id="bookCover">
+                <div class="comprarModalBookInfo">
+                    <div class="comprarModalCard" id="bookCover">
+                    </div>
+                    <div class="comprarModalSelect">
+                        <h3 class="cardTitle comprarCardTitle" id="bookTitle"> </h3>
+                        <p class="cardDetails" id="bookAuthor"> </p>
+                        <p class="cardDetails" id="bookPublisher"> </p>
+                        <div class="comprarModalSelectQuant">
+                            <div class="comprarModalSelectQuantPreco">
+                                <h2 class="cifrao">R$</h2>
+                                <h2 class="preco" id="bookPrice"> </h2>
+                            </div>
+                            <div class="comprarModalSelectQuantSet">
+                                <button class="buttonMenos" onClick="compraSetItens.menos()"> - </button>
+                                <input type="number" class="inputNumber">
+                                <button class="buttonMais" onClick="compraSetItens.plus()"> + </button>
+                            </div>
+                        </div>
+                        <div id="compraFrete">
 
+                            <h3><span style="color: #333;">Calcular Frete</span></h3>
+                            <p class="paragraphSmall">Informe sua localização para calcularmos os valores de frete. Entrega grátis para os estados de SP e RJ.</p>
+                            <div class="calculoFrete">
+                                <input type="text" placeholder="Digite o CEP" id="cep" class="formInput">
+                                <button type="submit" class="buttonFrete">Calcular Frete </button>
+                            </div>
+                            <div class="dadosDoUsuario">
+                                <input type="text" placeholder="Rua" id="logradouro" class="formInput">
+                                <input type="text" placeholder="Bairro" id ="bairro" class="formInput">
+                                <input type="text" placeholder="Cidade" id ="localidade" class="formInput">
+                                <input type="text" placeholder="UF" id ="uf" class="formInput">
+                            </div>
+                        
+                            <div id="compraComFrete">
+                                <h4 class="compraFreteTitle"> Entrega</h4>
+                                <div class="modalFrete">
+                                    <p>Padrão</p>
+                                    <p> R$ 10,00. Entrega em 5 dias úteis</p>
+                                </div>
+                            </div>
+                            <div id="compraSemFrete">
+                                <h4 class="compraFreteTitle"> Entrega</h4>
+                                <div class="modalFrete">
+                                    <p> Frete grátis. Entrega em 5 dias úteis</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="comprarModalSelect">
-                    <h3 class="cardTitle comprarCardTitle" id="bookTitle"> </h3>
-                    <p class="cardDetails" id="bookAuthor"> </p>
-                    <p class="cardDetails" id="bookPublisher"> </p>
-                    <div class="comprarModalSelectQuant">
-                        <div class="comprarModalSelectQuantPreco">
-                            <h2 class="cifrao">R$</h2>
-                            <h2 class="preco" id="bookPrice"> </h2>
-                        </div>
-                        <div class="comprarModalSelectQuantSet">
-                            <button class="buttonMenos" onClick="compraSetItens.menos()"> - </button>
-                            <input type="number" class="inputNumber">
-                            <button class="buttonMais" onClick="compraSetItens.plus()"> + </button>
-                        </div>
-                    </div>
-                    <div id="compraFrete">
-
-                        <h3> Onde você está ?</h3>
-                        <p>Informe sua localização para calcularmos os valores de frete.</p>
-                        <div class="calculoFrete">
-                            <input type="text" placeholder="Número do CEP" id="cep">
-                            <button type="submit" class="buttonFrete">Enviar </button>
-                        </div>
-                        <div class="dadosDoUsuario">
-                            <input type="text" placeholder="Rua" id="logradouro" >
-                            <input type="text" placeholder="Bairro" id ="bairro">
-                            <input type="text" placeholder="Cidade" id ="localidade">
-                            <input type="text" placeholder="UF" id ="uf">
-                        </div>
-                       
-                        <div id="compraComFrete">
-                            <h4 class="compraFreteTitle"> Entrega</h4>
-                            <div class="modalFrete">
-                                <p>Padrão</p>
-
-                                <p> R$ 10,00. Entrega em 5 dias úteis</p>
-                            </div>
-                        </div>
-                        <div id="compraSemFrete">
-                            <h4 class="compraFreteTitle"> Entrega</h4>
-                            <div class="modalFrete">
-                                <p> Frete grátis. Entrega em 5 dias úteis</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="buttons">
-
-                        <button class="buttonComprar" onClick=""> COMPRAR </button>
-                    </div>
-
+                <div class="buttons">
+                    <button id="buttonComprar" class="primaryButton" onClick="fecharModal()"> COMPRAR </button>
                 </div>
             </div>
         </div>
@@ -114,42 +112,6 @@
         </div>
         <div id="mostrar">
             <ul id="book-list">
-                <!-- <li class="li-book-container">
-                        <div class="book_container">
-                        <div class="cardImgcontainer">
-                            <img class="cardImg" src="./images/anti.jpeg">
-                        </div>
-                        <h3 class="cardTitle">Pequeno manual antirracista</h3>
-                        <h4 class="cardPrice">R$ 34,90</h4>
-                        <p class="cardDetails">Djamila Ribeiro</p>
-                        <p class="cardDetails">Companhia das Letras</p>
-                        <button class="buyButton" onClick="openCompraModal()">comprar</button>
-                        </div>
-                    </li>
-                    <li class="li-book-container">
-                        <div class="book_container">
-                        <div class="cardImgcontainer">
-                            <img class="cardImg" src="https://m.media-amazon.com/images/I/81nNCJpeHpL.jpg">
-                        </div>
-                        <h3 class="cardTitle">O passeador de livros</h3>
-                        <h4 class="cardPrice">R$ 54,90</h4>
-                        <p class="cardDetails">Carsten Henn</p>
-                        <p class="cardDetails">Intrinseca</p>
-                        <button class="buyButton" onClick="openCompraModal()">Comprar</button>
-                        </div>
-                    </li>
-                    <li class="li-book-container">
-                        <div class="book_container">
-                        <div class="cardImgcontainer">
-                            <img class="cardImg" src="https://livrariacultura.vteximg.com.br/arquivos/ids/137741414-1000-1000/2111978346.jpg?v=638073127465570000">
-                        </div>
-                        <h3 class="cardTitle">A Promessa / A Pane</h3>
-                        <h4 class="cardPrice">R$ 55,00</h4>
-                        <p class="cardDetails">Friedrich Durrenmatt</p>
-                        <p class="cardDetails">Estação Liberdade</p>
-                        <button class="buyButton" onClick="abrirCompraModal()">Comprar</button>
-                        </div>
-                    </li> -->
             </ul>
         </div>
     </section>

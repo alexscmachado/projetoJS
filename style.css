@@ -31,7 +31,9 @@ p{
 	font-size: 14px;
 	color: #333333;
 }
-
+.paragraphSmall{
+	font-size: 12px;    
+}
 .wrapper{
 	max-width: 1020px;
 	margin: auto;
@@ -58,10 +60,10 @@ p{
 	color: #888;
 	margin: 0px;	
 	line-height: 130%;
-    margin-left: 10px;
 }
 .cardTitle{
-    line-height: 180%;	
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 .cardImg{
  max-width: 200px;
@@ -195,7 +197,7 @@ p{
     height: 24px;
 }
 .comprarModal{
-    background-color: #333333;
+    background-color: rgb(0,0,0, 0.6);
     width: 100vw;
     height: 100vh;
     display: none;
@@ -206,14 +208,14 @@ p{
 .comprarModalWrapper{
     padding: 16px;
     background-color: #fff;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
     gap: 10px;
     width: 60%;
-    height: 100%;
+    max-width: 600px;
+    height: auto;
     margin: auto;
-    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .comprarModalCard{
@@ -224,6 +226,12 @@ p{
     height: 100%;
  
 }
+
+.comprarModalBookInfo{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}
 .ComprarModalCardDescription{
     margin-left: 12%;
     font-size: 30px;
@@ -233,72 +241,61 @@ p{
 
 }
 .cardImgModal{
-    max-width: 230px;  
+    max-width: 200px;  
+    padding:10px;
     margin: auto; 
-    border: solid;
+    border: none;
 }
 .comprarModalSelect{
-     width: 60%;
-    height: 70%;
-    background-color: white;
-    border: #888  solid  1px;
-    box-shadow: 5px 5px 5px 3px teal;
-    margin-top: 100px;
-    margin-right: 15px;
-    
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
 }
+
 .comprarCardTitle{
-   padding: 30px;
     color: black;
     font-size: 25px;
-    margin-left: 40px;
-   font-weight: bold;
+    font-weight: bold;
+    padding-top: 10px;
 }
 .comprarModalSelectQuant{
-   
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    margin-top: 10%;
+    justify-content: flex-start;
+    padding-top: 10px;
 }
 .comprarModalSelectQuantPreco{
     display: flex;
     flex-direction: row;
-    padding: 5px;
+    padding-right: 10px;
     
 }
 .inputNumber{
-    width: 60px;
-    height: 37px;
+    width: 50px;
+    height: 30px;
     text-align: center;
     border-radius: 5px;
-    background-color: #bababa;
+    background-color: #ededed;
     border: none;
 }
 .buttonMais{
-    width: 37px;
-    height: 37px;
+    width: 30px;
+    height: 30px;
     border-radius: 5px;
-    background-color: #bababa;
     font-size: 16px;
     border: none;
+    cursor: pointer;
 }
 .buttonMenos{
-    width: 37px;
-    height: 37px;
+    width: 30px;
+    height: 30px;
     border-radius: 5px;
-    background-color: #bababa;
     font-size: 16px;
     border: none;
+    cursor: pointer;
 }
 .buttons{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
     margin-top: 30px;
-   
-    height: 200px;
 }
 .buttonAdicionar{
 
@@ -322,7 +319,7 @@ p{
 #compraFrete{
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding-top: 20px;
     gap:10px;
 }
 .calculoFrete{
@@ -352,6 +349,14 @@ p{
 }
 
 .buttonFrete{
-    width: 60px;
-    height: 30px;
+    width: auto;
+    height: 26px;
+    color: #17a2b8;
+    padding: 4px 8px;
+    border-radius: 3px;
+    border: 2px solid #17a2b8;
+    cursor: pointer;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-top: 4px
 }
