@@ -49,14 +49,15 @@
                         <h3 class="cardTitle comprarCardTitle" id="bookTitle"> </h3>
                         <p class="cardDetails" id="bookAuthor"> </p>
                         <p class="cardDetails" id="bookPublisher"> </p>
+                        <p class="cardDetails" id="bookPublisher">Valor Unitário: R$ <span id="bookPrecoUnitario"></span></p>
                         <div class="comprarModalSelectQuant">
                             <div class="comprarModalSelectQuantPreco">
-                                <h2 class="cifrao">R$</h2>
-                                <h2 class="preco" id="bookPrice"> </h2>
+                                <h2 class="cifrao">R$ </h2>
+                                <h2 class="preco" id="bookPrice"></h2>
                             </div>
                             <div class="comprarModalSelectQuantSet">
                                 <button class="buttonMenos" onClick="compraSetItens.menos()"> - </button>
-                                <input type="number" class="inputNumber">
+                                <input type="number" min="0" class="inputNumber">
                                 <button class="buttonMais" onClick="compraSetItens.plus()"> + </button>
                             </div>
                         </div>
@@ -92,7 +93,7 @@
                     </div>
                 </div>
                 <div class="buttons">
-                    <button id="buttonComprar" class="primaryButton" onClick="fecharModal()"> COMPRAR </button>
+                    <button id="buttonComprar" class="primaryButton" onClick="closeCompraModal()"> COMPRAR </button>
                 </div>
             </div>
         </div>

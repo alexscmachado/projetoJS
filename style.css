@@ -360,3 +360,17 @@ p{
     text-transform: uppercase;
     margin-top: 4px
 }
+
+/* Disable input number arrows
+
+Chrome, Safari, Edge, Opera */
+input.inputNumber::-webkit-outer-spin-button,
+input.inputNumber::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input.inputNumber[type=number] {
+  -moz-appearance: textfield;
+}
