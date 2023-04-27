@@ -7,7 +7,7 @@ function livrosAdd(nome, autor, editora, preco, capa) {
 }
 
 
-class Adicionar {
+class Livraria {
     constructor() {
         this.cadastroDeLivro = []
     }
@@ -19,7 +19,7 @@ class Adicionar {
         let capa = document.querySelector("#cadastroCapa").value
         const novoLivro = new livrosAdd(nome, autor, editora, preco, capa)
         
-        add.pushLivronoArray(novoLivro)
+        this.pushLivronoArray(novoLivro)
         console.log(this.cadastroDeLivro)
 
         // Salvar em Local Storage o livro do usuário
@@ -31,8 +31,8 @@ class Adicionar {
         }else{
             localStorage.setItem("livrosdoUsuario", JSON.stringify([novoLivro]))
         }
-        add.exibirLivros(novoLivro)
-        add.limparForm()
+        this.exibirLivros(novoLivro)
+        this.limparForm()
         swal("Sucesso", "Livro Cadastrado com Sucesso", "success");
     }
 
@@ -106,13 +106,13 @@ class Adicionar {
     }
     
 }
-const add = new Adicionar()
-add.dispararButton()
+const livraria = new Livraria()
+livraria.dispararButton()
 
 
 function novaBusca(){
     let chaveBusca = document.querySelector("#searchInput").value
-    add.buscarLivros(chaveBusca)
+    livraria.buscarLivros(chaveBusca)
 }
 
 
@@ -124,8 +124,8 @@ const livrosIniciais = [{ nome: "Pequeno manual antirracista",  autor: "Djamila 
                     { nome: "A Promessa / A Pane",  autor: "Friedrich Durrenmatt", editora: "Estação Liberdade", preco: 94.99 , capa: "./images/promessa.jpeg"}];
 
     livrosIniciais.forEach(item =>{
-        add.exibirLivros(item)
-        add.pushLivronoArray(item)
+        livraria.exibirLivros(item)
+        livraria.pushLivronoArray(item)
     });
 
 
@@ -140,8 +140,8 @@ const userSavedBooks = (JSON.parse(localStorage.getItem("livrosdoUsuario")));
 console.log(userSavedBooks)
     if(userSavedBooks.length > 0){
         userSavedBooks.forEach(item =>{            
-        add.pushLivronoArray(item)
-        add.exibirLivros(item)
+            livraria.pushLivronoArray(item)
+            livraria.exibirLivros(item)
             });
         }
 
@@ -161,9 +161,11 @@ function fecharModal() {
 function openCompraModal(nomeLivro) {
     const comprar = document.querySelector(".comprarModal");
     comprar.style.display = "flex";
-    const livroFind = add.cadastroDeLivro.find(livro =>{return nomeLivro==livro.nome});
+    const livroFind = livraria.cadastroDeLivro.find(livro =>{return nomeLivro==livro.nome});
     const modalBookTitle = document.querySelector('#bookTitle')
     modalBookTitle.innerText = `${livroFind.nome}`
+    const precoUnitario  = document.querySelector('#bookPrecoUnitario')
+    precoUnitario.innerText = `${livroFind.preco}`
     const modalBookCover = document.querySelector('#bookCover')
     modalBookCover.innerHTML = `<img class="cardImgModal" src="${livroFind.capa}">`
     const modalBookPrice = document.querySelector('#bookPrice')
@@ -171,7 +173,8 @@ function openCompraModal(nomeLivro) {
     const modalBookPublisher = document.querySelector('#bookPublisher')
     modalBookPublisher.innerText = `${livroFind.editora}`
     const modalBookAuthor = document.querySelector('#bookAuthor')
-    modalBookAuthor.innerText = `${livroFind.autor}`    
+    modalBookAuthor.innerText = `${livroFind.autor}`
+    document.querySelector(".inputNumber").value = 1    
 }
 // fechar modal compra
 
@@ -179,6 +182,7 @@ function closeCompraModal() {
     document.querySelector(".comprarModal").style.display = "none";
     limparCadastro()
 }
+
 let = document.querySelector(".inputNumber").value = 1
 
 class ComprarItens {
@@ -187,26 +191,21 @@ class ComprarItens {
     }
     
     plus() {
-        let atual=document.querySelector(".inputNumber").value
-        let novo = atual -(-1)
-        document.querySelector(".inputNumber").value = novo    
-        let changeValor = document.querySelector(".preco")
-        let valorAtual = 34.90
-        let quant = novo
-        let valorNovo = quant*valorAtual
-        changeValor.innerHTML = valorNovo.toFixed(2)
+        const quantidade = document.querySelector(".inputNumber").value
+        const precoUnitario  = parseFloat(document.querySelector("#bookPrecoUnitario").innerHTML)
+        const novaQuantidade = parseInt(quantidade) + 1
+        document.querySelector(".inputNumber").value = novaQuantidade   
+        const valorTotal = document.querySelector(".preco")
+        valorTotal.innerHTML = (novaQuantidade*precoUnitario).toFixed(2)
     }
     menos() {
-        let atual=document.querySelector(".inputNumber").value    
-        if(atual>0){
-            let novo = atual -1
-            document.querySelector(".inputNumber").value = novo
-            let changeValor = document.querySelector(".preco")
-            let valorAtual = 34.90
-            let quant = novo
-            let valorNovo = quant*valorAtual
-            changeValor.innerHTML = valorNovo.toFixed(2)
-           
+        const quantidade = document.querySelector(".inputNumber").value   
+        if(quantidade>0){
+            const precoUnitario  = parseFloat(document.querySelector("#bookPrecoUnitario").innerHTML)
+            const novaQuantidade = parseInt(quantidade) - 1
+            document.querySelector(".inputNumber").value = novaQuantidade   
+            const valorTotal = document.querySelector(".preco")
+            valorTotal.innerHTML = (novaQuantidade*precoUnitario).toFixed(2) 
         }
        
     }
@@ -263,7 +262,5 @@ function limparCadastro(){
 
 }
 
-
-// livraria()
 
 
